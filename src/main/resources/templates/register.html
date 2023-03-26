@@ -5,6 +5,7 @@
     <title>reg</title>
 </head>
 <body>
+<div th:insert="header.html :: header"></div>
 <form th:action="@{/register}" th:method='post'>
   <input type="text" name="email" alt="email"/>
   <input type="password" name="password"/>

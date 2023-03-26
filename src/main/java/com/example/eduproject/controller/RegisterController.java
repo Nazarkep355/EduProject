@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
 @Controller
@@ -30,9 +32,9 @@ public class RegisterController {
     public String registerUser(HttpServletRequest request, String email, String password, String name) {
         try {
             User user = registerService.RegisterUserByForm(email, password, name);
-            UsernamePasswordAuthenticationToken authReq
-                    = new UsernamePasswordAuthenticationToken(user.getEmail(),
-                    password);
+            UsernamePasswordAuthenticationToken authReq =
+                    new UsernamePasswordAuthenticationToken(
+                            user.getEmail(),password);
             Authentication auth = authManager.authenticate(authReq);
 
             SecurityContext sc = SecurityContextHolder.getContext();
@@ -46,7 +48,8 @@ public class RegisterController {
     }
 
     @GetMapping
-    public String registerPage(Model model){
+    public String registerPage(Model model, Optional<String> error){
+        error.ifPresent((e)->model.addAttribute("error",e));
         return "register.html";
     }
 }
