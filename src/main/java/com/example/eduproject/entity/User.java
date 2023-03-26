@@ -1,10 +1,7 @@
 package com.example.eduproject.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,8 +11,10 @@ import java.util.List;
 @Setter
 @RequiredArgsConstructor
 @Builder
+@AllArgsConstructor
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column
     private String email;

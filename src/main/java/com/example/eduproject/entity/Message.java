@@ -1,10 +1,7 @@
 package com.example.eduproject.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Table(name="messages")
 @Entity
@@ -12,8 +9,10 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 @Builder
+@AllArgsConstructor
 public class Message {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "author")
