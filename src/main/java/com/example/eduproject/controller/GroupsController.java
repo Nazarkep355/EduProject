@@ -16,7 +16,10 @@ public class GroupsController {
     @GetMapping("/groups")
     public String groups(Pageable pageable, HttpServletRequest request, Model model) {
     String email = request.getRemoteUser();
-    model.addAttribute("email",email);
+    if(email==null){
+        return "redirect:/";
+    }
+    model.addAttribute("groups",groupService.findByUserEmail(email,pageable));
         return "groups.html";
     }
 }

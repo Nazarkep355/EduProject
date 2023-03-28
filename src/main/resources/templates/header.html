@@ -40,7 +40,10 @@
 
       <div sec:authorize="!authenticated" class="text-end">
         <a href="/login" class="btn btn-outline-light me-2" th:text="'Login'"></a>
-<!--        <button type="button" class="btn btn-warning" >Sign-up</button>-->
+
+          <a href="/register" class="btn btn-warning" th:text="'Register'"></a>
+
+        <!--        <button type="button" class="btn btn-warning" >Sign-up</button>-->
       </div>
       <div sec:authorize="hasAnyAuthority('USER','ADMIN')" class="text-end">
         <form th:method="post" th:action="@{/logout}">
