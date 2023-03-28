@@ -20,6 +20,8 @@ public class Group {
     @Column
     private String name;
     @Column
+    private String image;
+    @Column
     private String code;
     @Column
     private GroupAccessibility accessibility;

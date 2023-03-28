@@ -19,4 +19,5 @@ public class EncoderConfig {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
                 .build();
     }
+
 }

@@ -3,9 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Groups</title>
+    <style>
+
+        .group-card {
+            -webkit-font-smoothing: antialiased;
+            text-size-adjust: 100%;
+            color: rgba(0, 0, 0, .87);
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            line-height: 1.25rem;
+            list-style: none;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #fff;
+            border: 0.0625rem solid #dadce0;
+            border-radius: 0.5rem;
+            background-clip: padding-box;
+            display: flex;
+            flex-direction: column;
+            height: 18.375rem;
+            margin-bottom: 1.5rem;
+            margin-right: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            text-align: left;
+            width: 18.75rem;
+            cursor: pointer;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: auto auto auto;
+
+        }
+        .group-title {
+            -webkit-font-smoothing: antialiased;
+            text-size-adjust: 100%;
+            color: rgba(0, 0, 0, .87);
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 400;
+            line-height: 1.25rem;
+            list-style: none;
+            text-align: left;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
 <div th:insert="header.html :: header"></div>
-<div  th:text="${email}"></div>
+<div th:text="${email}"></div>
+<div class="grid-container">
+    <div class="grid-item">
+        <a href="/groups/" style="text-decoration: none">
+            <div class="group-card">
+                <div>
+                    <div style="border: 0.0625rem solid #dadce0;text-align: center"><h4>GROUP TITLE</h4></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+
+</div>
 </body>
 </html>

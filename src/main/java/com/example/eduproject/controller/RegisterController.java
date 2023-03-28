@@ -29,7 +29,8 @@ public class RegisterController {
     private AuthenticationManager authManager;
 
     @PostMapping
-    public String registerUser(HttpServletRequest request, String email, String password, String name) {
+    public String registerUser(HttpServletRequest request, String email,
+                               String password, String name) {
         try {
             User user = registerService.RegisterUserByForm(email, password, name);
             UsernamePasswordAuthenticationToken authReq =
