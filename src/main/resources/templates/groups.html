@@ -64,7 +64,10 @@
                     <div style="border: 0.0625rem solid #dadce0;text-align: center"><h4 style="font-family:'Optima'  " th:text="${group.name}">GROUP TITLE</h4></div>
                 </div>
                 <div style="width: border-box;height: border-box">
-                    <div><h4 style="font-family: 'Copperplate'" th:text="'Users:'+${group.students.size()}"
+                    <div><h4 style="font-family: 'Copperplate'" th:text="${group.description}"
+                    >Users: 32</h4></div>
+                    <div><h4 style="font-family: 'Copperplate'"
+                             th:text="'Users:'+${group.students.size()+group.teachers.size()}"
                     >Users: 32</h4></div>
                     <div><h4 style="font-family: 'Copperplate'" th:if="${group.teachers.size()>0}"
                              th:text="'Teacher:'+${group.teachers.get(0).name}">Teacher: John Doe</h4></div>

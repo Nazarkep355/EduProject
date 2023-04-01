@@ -19,7 +19,7 @@ public class SecurityConfig {
                 .cors()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/user/*")
+                .requestMatchers("/user/*","/groups/*")
                 .hasAnyAuthority("USER","ADMIN")
                 .and()
                 .authorizeHttpRequests()

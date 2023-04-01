@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join group</title>
+</head>
+<body>
+<div th:insert="header.html :: header"></div>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="col-md-10 mx-auto col-lg-5">
+    <!--            <small class="text-muted" th:if="${registered}" th:text="${Youjustreged}"></small>-->
+    <form th:action="@{/groups/join}" method="post" class="p-4 p-md-5 border rounded-3 bg-light">
+      <div class="form-floating mb-3">
+        <input type="text" name="code" class="form-control"
+               id="emailInput" placeholder="name">
+        <label th:text="'Code'" for="emailInput"></label>
+      </div>
+      <div class="btn-group" role="group" style="margin-bottom: 10px" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" checked class="btn-check" id="prvtChek" autocomplete="off">
+        <label class="btn btn-outline-primary" for="prvtChek">Private</label>
+      </div>
+      <div class="form-floating mb-3"><input type="text" name="password" class="form-control"
+                                             id="InputPassword" placeholder="Password" >
+        <label th:text="'Password'" for="InputPassword"></label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" th:text="'Join'"  type="submit"></button>
+      <hr class="my-4">
+      <small class="text-muted"  th:text="${error}"
+             th:if='${error!=null}'></small>
+
+    </form>
+  </div>
+  <script>
+
+    const allowDrinksCheckbox = document.getElementById("prvtChek");
+    const drinkSelect = document.getElementById("InputPassword");
+
+    allowDrinksCheckbox.addEventListener(
+            "change",
+            (event) => {
+              drinkSelect.disabled = !event.target.checked;
+            },
+            false
+    );
+
+  </script>
+</div>
+</body>
+</html>

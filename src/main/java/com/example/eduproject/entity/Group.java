@@ -24,6 +24,8 @@ public class Group {
     @Column
     private String code;
     @Column
+    private String description;
+    @Column
     private GroupAccessibility accessibility;
     @Column
     private String password;
