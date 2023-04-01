@@ -47,7 +47,7 @@ public class GroupsController {
     public String joinRoom(String code,Optional<String> password,HttpServletRequest request){
         String email = request.getRemoteUser();
         try{
-            groupService.addUserToGroup(code,password.get(),email);
+            groupService.addUserToGroup(code,password.orElse(null),email);
         }catch (IllegalArgumentException e){
             return "redirect:/groups/join?error="+e.getMessage();
         }

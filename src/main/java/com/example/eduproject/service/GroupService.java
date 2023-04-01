@@ -37,6 +37,7 @@ public class GroupService {
         while (groupRepository.findGroupByCode(code).isPresent()) {
             code = StringUtils.randomAlphanumeric(6);
         }
+        password = "password";
         Group group = Group.builder()
                 .teachers(List.of(userRepository.findByEmail(email)
                         .orElseThrow(() -> new IllegalArgumentException("Email not found"))))
@@ -50,20 +51,22 @@ public class GroupService {
         return groupRepository.save(group);
     }
 
-    public Group addUserToGroup(String code, String password, String email) {
+    public Group    addUserToGroup(String code, String password, String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("Email not found"));
         Group group = groupRepository.findGroupByCode(code)
                 .orElseThrow(() -> new IllegalArgumentException("Group not found"));
+        if (group.getStudents().contains(user) || group.getTeachers().contains(user)) {
+            throw new IllegalArgumentException("You are already in this group");
+        }
         if (group.getAccessibility() == GroupAccessibility.PRIVATE) {
             if (StringUtils.isEmpty(password)) {
                 throw new IllegalArgumentException("Group is private");
             }
             if (passwordEncoder.matches(password, group.getPassword())) {
                 group.getStudents().add(user);
-               return groupRepository.save(group);
-            }
-            else throw  new IllegalArgumentException("Password is incorrect");
+                return groupRepository.save(group);
+            } else throw new IllegalArgumentException("Password is incorrect");
         }
 
         group.getStudents().add(user);

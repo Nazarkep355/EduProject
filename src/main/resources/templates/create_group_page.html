@@ -11,7 +11,7 @@
     <!--            <small class="text-muted" th:if="${registered}" th:text="${Youjustreged}"></small>-->
     <form th:action="@{/groups/create}" method="post" class="p-4 p-md-5 border rounded-3 bg-light">
       <div class="form-floating mb-3">
-        <input type="text" name="name" class="form-control"
+        <input type="text" required name="name" class="form-control"
                id="emailInput" placeholder="name">
         <label th:text="'Name*'" for="emailInput"></label>
       </div>
